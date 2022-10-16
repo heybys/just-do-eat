@@ -1,21 +1,41 @@
 import React from 'react';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Layout from './generic/Layout';
+import ErrorPage from './generic/ErrorPage';
+import Main from './page/Main';
+import About from './page/About';
+import Dashboard from './page/Dashboard';
+import Login from './page/Login';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const router = createBrowserRouter([
+  {
+    path: '',
+    element: <Layout />,
+    children: [
+      {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/',
+        element: <Main />
+      },
+      {
+        path: '/about',
+        element: <About />
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard />
+      }
+    ]
+  },
+  {
+    path: '*',
+    element: <ErrorPage />
+  }
+]);
+
+const App = () => <RouterProvider router={router} />;
 
 export default App;

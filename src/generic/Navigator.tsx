@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './components/Logo';
+import Menu from './components/Menu';
 
 const Navigator = () => {
   return (
@@ -14,23 +15,15 @@ const Navigator = () => {
       }}
     >
       <Logo />
-      <ul style={{ display: 'flex', gap: 32 }}>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
-        <li>
-          <Link to="/nothing-here">Nothing Here</Link>
-        </li>
-      </ul>
-      <Link to="/login" style={{ padding: 16 }}>
-        Login
-      </Link>
+      <Menu />
+      <div className="buttons">
+        <Link to="/login" style={{ padding: 16 }}>
+          Login
+        </Link>
+        <Link to="/register" style={{ padding: 16 }}>
+          Register
+        </Link>
+      </div>
     </nav>
   );
 };

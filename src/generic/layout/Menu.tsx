@@ -6,8 +6,8 @@ const Menu = () => {
   return (
     <ul className="menu">
       <li>
-        <NavLink className="item" to="/" end>
-          Home
+        <NavLink className="item" to="/site" end>
+          Site
         </NavLink>
       </li>
       <li>
@@ -18,11 +18,6 @@ const Menu = () => {
       <li>
         <NavLink className="item" to="/dashboard">
           Dashboard
-        </NavLink>
-      </li>
-      <li>
-        <NavLink className="item" to="/nothing-here">
-          Nothing Here
         </NavLink>
       </li>
     </ul>

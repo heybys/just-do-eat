@@ -8,7 +8,7 @@ const Logo = () => {
     <div
       className="logo"
       onClick={() => {
-        navigate('/');
+        navigate('/main');
       }}
     >
       <img className="image" src={'/cooking.png'} alt={''} />

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './menu.css';
 
 const Menu = () => {
   return (
-    <ul style={{ display: 'flex', gap: 32 }}>
+    <ul className="menu">
       <li>
         <Link to="/">Home</Link>
       </li>

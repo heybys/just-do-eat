@@ -1,22 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from './components/Logo';
-import Menu from './components/Menu';
+import Logo from './Logo';
+import Menu from './Menu';
+import './navigator.css';
 
 const Navigator = () => {
   return (
-    <nav
-      className="navigator"
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '16px 32px'
-      }}
-    >
+    <nav className="navigator">
       <Logo />
       <Menu />
-      <div className="buttons">
+      <div className="buttons" style={{ display: 'flex' }}>
         <Link to="/login" style={{ padding: 16 }}>
           Login
         </Link>

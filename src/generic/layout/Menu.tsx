@@ -1,21 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './menu.css';
 
 const Menu = () => {
   return (
     <ul className="menu">
       <li>
-        <Link to="/">Home</Link>
+        <NavLink className="item" to="/" end>
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        <NavLink className="item" to="/about" end>
+          About
+        </NavLink>
       </li>
       <li>
-        <Link to="/dashboard">Dashboard</Link>
+        <NavLink className="item" to="/dashboard">
+          Dashboard
+        </NavLink>
       </li>
       <li>
-        <Link to="/nothing-here">Nothing Here</Link>
+        <NavLink className="item" to="/nothing-here">
+          Nothing Here
+        </NavLink>
       </li>
     </ul>
   );

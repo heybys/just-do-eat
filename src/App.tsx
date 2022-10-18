@@ -7,6 +7,8 @@ import About from './page/About';
 import Dashboard from './page/Dashboard';
 import Login from './page/Login';
 import Register from './page/Register';
+import { configuredStore } from './store/configured-store';
+import { Provider } from 'react-redux';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
   }
 ]);
 
-const App = () => <RouterProvider router={router} />;
+const App = () => (
+  <Provider store={configuredStore}>
+    <RouterProvider router={router} />;
+  </Provider>
+);
 
 export default App;

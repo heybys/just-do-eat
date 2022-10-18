@@ -2,3 +2,11 @@
     display: flex;
     gap: 32px;
 }
+
+.menu .item {
+    color: white;
+}
+
+.menu .item.active {
+    color: var(--emphasis-color);
+}

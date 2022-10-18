@@ -20,24 +20,15 @@
 
 .login .paper .title {
     font-size: 48px;
-    font-weight: 700;
+    font-weight: bold;
 }
 
 .login .paper .input {
     width: 256px;
     height: 36px;
-    border: 1px solid #EEE;
-    box-sizing: border-box;
-    padding: 0 10px;
-    color: #333;
-    outline-color: deepskyblue;
+
 }
 .login .paper .button {
     width: 256px;
     height: 36px;
-    background: skyblue;
-    color: white;
-    border: 0;
-    outline: 0;
-    font-weight: 900;
 }

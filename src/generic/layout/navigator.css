@@ -1,11 +1,20 @@
 .navigator {
-    position: fixed;
+    /*position: fixed;*/
     top: 0;
     padding: 16px 32px;
     width: calc(100% - 64px);
     display: flex;
+    justify-content: center;
+    box-shadow: 0 1px 3px 0 #EEE;
+    background-color: #000;
+    opacity: 0.8;
+}
+
+.navigator .inner {
+    width: 100%;
+    max-width: 1680px;
+    height: 64px;
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: white;
-    box-shadow: 0 1px 3px 0 #EEE;
 }

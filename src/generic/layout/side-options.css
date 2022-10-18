@@ -1,0 +1,16 @@
+.side-options {
+    display: flex;
+    gap: 32px;
+}
+
+.side-options .option {
+    color: white;
+}
+
+.side-options .option.login {
+    color: var(--main-color);
+}
+
+.side-options .option.login:hover {
+    color: var(--emphasis-color);
+}

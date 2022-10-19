@@ -12,7 +12,7 @@ const Logo = () => {
       }}
     >
       <img className="image" src={'/cooking.png'} alt={''} />
-      <span className="text">Food Memories</span>
+      <span className="text">JUST DO EAT</span>
     </div>
   );
 };

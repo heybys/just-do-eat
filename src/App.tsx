@@ -5,7 +5,7 @@ import ErrorPage from './generic/page/ErrorPage';
 import Site from './page/Site';
 import About from './page/About';
 import Dashboard from './page/Dashboard';
-import Login from './page/Login';
+import Login from './page/login/Login';
 import Register from './page/Register';
 import { configuredStore } from './store/configured-store';
 import { Provider } from 'react-redux';

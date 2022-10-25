@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './login.css';
+import LoginService from "./login.service";
 
 const Login = () => {
   const [id, setId] = useState<string | undefined>();
   const [password, setPassword] = useState<string | undefined>();
+
+  const onClickLoginButton = () => {
+    let loginService = new LoginService();
+    if (id && password) {
+      loginService.login(id, password);
+    } else {
+      alert("id, password empty.");
+    }
+  }
 
   return (
     <div className="login">
@@ -21,7 +31,7 @@ const Login = () => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button className="button">로그인</button>
+        <button className="button" onClick={onClickLoginButton}>로그인</button>
       </div>
     </div>
   );

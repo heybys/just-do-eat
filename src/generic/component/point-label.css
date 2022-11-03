@@ -1,0 +1,15 @@
+.point-label {
+}
+
+.point-label .point {
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+.point-label .children {
+    color: #333;
+}
+
+.point-label .required {
+    color: red;
+}

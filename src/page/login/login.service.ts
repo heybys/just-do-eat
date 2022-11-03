@@ -15,14 +15,7 @@ class LoginService extends BaseService{
             }
         };
 
-        const result = await axios.post(url, data, config);
-
-        console.log('result : ', result);
-        console.log('cookie : ', document.cookie);
-        let header = result.headers;
-        console.log('set-cookie : ', header);
-
-        return result;
+        return await axios.post(url, data, config);
     }
 
     getUsers = async () => {

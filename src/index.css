@@ -38,11 +38,12 @@ input {
     padding: 0 8px;
     outline-color: var(--emphasis-color);
     font-size: var(--main-font-size);
-    color: #333;
+    color: #999;
 }
 
 input::placeholder {
     font-size: calc(var(--main-font-size) - 2px);
+    color: #999;
 }
 
 button {
@@ -57,11 +58,27 @@ button {
     font-size: var(--main-font-size);
 }
 
-.button:hover {
+.button:disabled {
+    background: #999999;
+}
+
+.button:hover:enabled {
     background: var(--emphasis-color);
     cursor: pointer;
 }
 
-.button:active {
+.button:active:enabled {
     font-size: calc(var(--main-font-size) - 1px);
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

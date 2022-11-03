@@ -1,21 +1,14 @@
 .login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .login .paper {
     width: 512px;
     height: 512px;
     margin-top: 192px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
+    padding: 32px;
     border-radius: 16px;
     box-shadow: 1px 2px 5px 1px #EEE;
+    gap: 32px;
 }
 
 .login .paper .title {
@@ -23,12 +16,24 @@
     font-weight: bold;
 }
 
-.login .paper .input {
+.login .paper .form {
+    gap: 32px;
+}
+
+.login .paper .form .input-container {
+    gap: 16px;
+}
+
+.login .paper .form .input-container .input {
     width: 256px;
     height: 36px;
-
 }
-.login .paper .button {
+
+.login .paper .form .button-container {
+    gap: 16px;
+}
+
+.login .paper .form .button-container .button {
     width: 256px;
     height: 36px;
 }

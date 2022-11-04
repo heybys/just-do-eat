@@ -3,13 +3,13 @@ import './login.css';
 import LoginService from './login.service';
 
 const Login = () => {
-  const [id, setId] = useState<string>('');
+  const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const loginService = new LoginService();
 
   const onClickLoginButton = async () => {
-    if (id && password) {
-      await loginService.login(id, password);
+    if (username && password) {
+      await loginService.login(username, password);
     } else {
       alert('id, password empty.');
     }
@@ -24,9 +24,9 @@ const Login = () => {
             <input
               className="input"
               placeholder={'ID'}
-              value={id}
+              value={username}
               autoFocus={true}
-              onChange={(event) => setId(event.target.value)}
+              onChange={(event) => setUsername(event.target.value)}
             />
             <input
               className="input"
@@ -37,7 +37,7 @@ const Login = () => {
           </div>
           <div className="button-container flex-column-center">
             <button className="button" onClick={onClickLoginButton}>
-              로그인
+              레쯔기릿
             </button>
           </div>
         </div>

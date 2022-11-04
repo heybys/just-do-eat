@@ -1,37 +1,25 @@
-import React, {FormEvent, useEffect, useRef, useState} from 'react';
+import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import './register.css';
 import PointLabel from '../../generic/component/PointLabel';
-import RegisterService, {RegisterInfo} from "./register.service";
+import RegisterService, { RegisterInfo } from './register.service';
 
 const Register = () => {
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const confirmPasswordRef = useRef<HTMLInputElement>(null);
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [phoneNumber, setPhoneNumber] = useState<string>('');
-  const [company, setCompany] = useState<string>('');
-
-  const [isDisable, setIsDisable] = useState<boolean>(true);
-
   const registerService = new RegisterService();
+
+  const [registerInfo, setRegisterInfo] = useState<RegisterInfo>(
+    RegisterInfo.init()
+  );
+  const [isValidToSubmit, setIsValidToSubmit] = useState(false);
+  const confirmPasswordRef = useRef<HTMLInputElement>(null);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (password != confirmPassword) {
+
+    if (!registerInfo.isValidPassword()) {
       alert('check your password.');
       confirmPasswordRef.current?.focus();
       return;
     }
-    const registerInfo: RegisterInfo = {
-      username,
-      password,
-      name,
-      email,
-      phoneNumber,
-      company
-    };
 
     alert(JSON.stringify(registerInfo));
 
@@ -39,85 +27,107 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (username && password && confirmPassword && name && email && phoneNumber) {
-      setIsDisable(false);
-    } else {
-      setIsDisable(true);
-    }
-  }, [username, password, confirmPassword, name, email, phoneNumber])
+    setIsValidToSubmit(registerInfo.isValidToSubmit());
+  }, [registerInfo]);
 
   return (
     <div className="register flex-column-center">
       <div className="paper flex-column">
         <div className="title">
-          <span>회원가입</span>
+          <span>회원 가입</span>
         </div>
-        <form className="form flex-column" onSubmit={onSubmit} >
+        <form className="form flex-column" onSubmit={onSubmit}>
           <div className="property-container flex-column">
             <div className="property flex-column">
-              <PointLabel required>ID</PointLabel>
+              <PointLabel required>Username</PointLabel>
               <input
                 className="input"
-                value={username}
+                value={registerInfo.username}
                 autoFocus
-                onChange={(event) => setUsername(event.target.value)}
+                onChange={(event) =>
+                  setRegisterInfo({
+                    ...registerInfo,
+                    username: event.target.value
+                  })
+                }
               />
             </div>
             <div className="property flex-column">
               <PointLabel required>Password</PointLabel>
               <input
                 className="input"
-                value={password}
+                value={registerInfo.password}
                 type="password"
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(event) =>
+                  setRegisterInfo({
+                    ...registerInfo,
+                    password: event.target.value
+                  })
+                }
               />
             </div>
             <div className="property flex-column">
               <PointLabel required>Confirm Password</PointLabel>
               <input
                 className="input"
-                value={confirmPassword}
+                value={registerInfo.confirmPassword}
                 type="password"
                 ref={confirmPasswordRef}
-                onChange={(event) => setConfirmPassword(event.target.value)}
-              />
-            </div>
-            <div className="property flex-column">
-              <PointLabel required>︎Name</PointLabel>
-              <input
-                className="input"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
+                onChange={(event) =>
+                  setRegisterInfo({
+                    ...registerInfo,
+                    confirmPassword: event.target.value
+                  })
+                }
               />
             </div>
             <div className="property flex-column">
               <PointLabel required>︎Email</PointLabel>
               <input
                 className="input"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                value={registerInfo.email}
+                onChange={(event) =>
+                  setRegisterInfo({
+                    ...registerInfo,
+                    email: event.target.value
+                  })
+                }
               />
             </div>
             <div className="property flex-column">
               <PointLabel required>Phone Number</PointLabel>
               <input
                 className="input"
-                value={phoneNumber}
-                onChange={(event) => setPhoneNumber(event.target.value)}
+                value={registerInfo.phoneNumber}
+                onChange={(event) =>
+                  setRegisterInfo({
+                    ...registerInfo,
+                    phoneNumber: event.target.value
+                  })
+                }
               />
             </div>
             <div className="property flex-column">
               <PointLabel>Company</PointLabel>
               <input
                 className="input"
-                value={company}
-                onChange={(event) => setCompany(event.target.value)}
+                value={registerInfo.company}
+                onChange={(event) =>
+                  setRegisterInfo({
+                    ...registerInfo,
+                    company: event.target.value
+                  })
+                }
               />
             </div>
           </div>
           <div className="button-container flex-column-center">
-            <button className="button" type="submit" disabled={isDisable}>
-              제출하기
+            <button
+              className="button"
+              type="submit"
+              disabled={!isValidToSubmit}
+            >
+              이걸로 가입 끝 !
             </button>
           </div>
         </form>

@@ -1,40 +1,35 @@
 import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import './register.css';
 import PointLabel from '../../generic/component/PointLabel';
-import RegisterService, { RegisterInfo } from './register.service';
+import { RegisterInfo, RegisterInfoDefault } from '../model/auth.model';
 
 const Register = () => {
-  const registerService = new RegisterService();
-
-  const [registerInfo, setRegisterInfo] = useState<RegisterInfo>(
-    RegisterInfo.init()
-  );
-  const [isValidToSubmit, setIsValidToSubmit] = useState(false);
+  const [registerInfo, setRegisterInfo] = useState<RegisterInfo>(RegisterInfoDefault);
+  const [isValid, setIsValid] = useState(false);
   const confirmPasswordRef = useRef<HTMLInputElement>(null);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!registerInfo.isValidPassword()) {
+    if (registerInfo.password != registerInfo.confirmPassword) {
       alert('check your password.');
       confirmPasswordRef.current?.focus();
       return;
     }
 
     alert(JSON.stringify(registerInfo));
-
-    // await registerService.register(registerInfo);
   };
 
   useEffect(() => {
-    setIsValidToSubmit(registerInfo.isValidToSubmit());
+    const { username, password, confirmPassword, email, phoneNumber } = registerInfo;
+    setIsValid(!!(username && password && confirmPassword && email && phoneNumber));
   }, [registerInfo]);
 
   return (
     <div className="register flex-column-center">
       <div className="paper flex-column">
         <div className="title">
-          <span>회원 가입</span>
+          <span>회원 정보</span>
         </div>
         <form className="form flex-column" onSubmit={onSubmit}>
           <div className="property-container flex-column">
@@ -122,12 +117,8 @@ const Register = () => {
             </div>
           </div>
           <div className="button-container flex-column-center">
-            <button
-              className="button"
-              type="submit"
-              disabled={!isValidToSubmit}
-            >
-              이걸로 가입 끝 !
+            <button className="button" type="submit" disabled={!isValid}>
+              등록 할게요.
             </button>
           </div>
         </form>

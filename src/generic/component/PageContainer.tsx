@@ -7,11 +7,7 @@ interface Props extends PropsWithChildren {
   isFooter?: boolean;
 }
 
-const PageContainer = ({
-  isHeader = true,
-  isFooter = true,
-  children
-}: Props) => {
+const PageContainer = ({ isHeader = true, isFooter = true, children }: Props) => {
   return (
     <div>
       {isHeader && <Header />}

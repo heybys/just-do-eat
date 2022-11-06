@@ -5,10 +5,10 @@ import ErrorPage from './generic/page/ErrorPage';
 import Site from './page/Site';
 import About from './page/About';
 import Dashboard from './page/Dashboard';
-import Login from './page/login/Login';
 import { configuredStore } from './store/configured-store';
 import { Provider } from 'react-redux';
-import Register from "./page/register/Register";
+import Login from './auth/page/Login';
+import Register from './auth/page/Register';
 
 const router = createBrowserRouter([
   {

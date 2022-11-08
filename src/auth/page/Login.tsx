@@ -9,8 +9,8 @@ const Login = () => {
   const onClickLoginButton = async () => {
     const { username, password } = loginInfo;
 
-    await authService.login(loginInfo);
     if (username && password) {
+      await authService.login(loginInfo);
     } else {
       alert('id, password empty.');
     }

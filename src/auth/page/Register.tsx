@@ -2,6 +2,7 @@ import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import './register.css';
 import PointLabel from '../../generic/component/PointLabel';
 import { RegisterInfo, RegisterInfoDefault } from '../model/auth.model';
+import { authService } from '../service/authService';
 
 const Register = () => {
   const [registerInfo, setRegisterInfo] = useState<RegisterInfo>(RegisterInfoDefault);
@@ -12,17 +13,16 @@ const Register = () => {
     e.preventDefault();
 
     if (registerInfo.password != registerInfo.confirmPassword) {
+      await authService.register(registerInfo);
+    } else {
       alert('check your password.');
       confirmPasswordRef.current?.focus();
-      return;
     }
-
-    alert(JSON.stringify(registerInfo));
   };
 
   useEffect(() => {
-    const { username, password, confirmPassword, email, phoneNumber } = registerInfo;
-    setIsValid(!!(username && password && confirmPassword && email && phoneNumber));
+    const { username, password, confirmPassword, address, phoneNumber } = registerInfo;
+    setIsValid(!!(username && password && confirmPassword && address && phoneNumber));
   }, [registerInfo]);
 
   return (
@@ -77,14 +77,14 @@ const Register = () => {
               />
             </div>
             <div className="property flex-column">
-              <PointLabel required>︎Email</PointLabel>
+              <PointLabel required>Address</PointLabel>
               <input
                 className="input"
-                value={registerInfo.email}
+                value={registerInfo.address}
                 onChange={(event) =>
                   setRegisterInfo({
                     ...registerInfo,
-                    email: event.target.value
+                    address: event.target.value
                   })
                 }
               />
@@ -103,14 +103,14 @@ const Register = () => {
               />
             </div>
             <div className="property flex-column">
-              <PointLabel>Company</PointLabel>
+              <PointLabel>Email</PointLabel>
               <input
                 className="input"
-                value={registerInfo.company}
+                value={registerInfo.email}
                 onChange={(event) =>
                   setRegisterInfo({
                     ...registerInfo,
-                    company: event.target.value
+                    email: event.target.value
                   })
                 }
               />

@@ -6,21 +6,22 @@ export interface LoginInfo {
 export const LoginInfoDefault: LoginInfo = {
   username: '',
   password: ''
-}
+};
 
 export interface RegisterInfo {
   username: string;
   password: string;
   confirmPassword: string;
-  email: string;
+  address: string;
   phoneNumber: string;
-  company?: string;
+  email?: string;
 }
 
 export const RegisterInfoDefault: RegisterInfo = {
   username: '',
   password: '',
   confirmPassword: '',
-  email: '',
-  phoneNumber: ''
-}
+  address: '',
+  phoneNumber: '',
+  email: ''
+};

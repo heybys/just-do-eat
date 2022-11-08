@@ -16,17 +16,23 @@ class AuthService extends BaseService {
       }
     };
 
-    return await axios.post(url, data, config);
+    const result = await axios.post(url, data, config);
+
+    if (result.status === 200) {
+      window.location.href = '/';
+    } else {
+      throw new Error();
+    }
   };
 
   register = async (registerInfo: RegisterInfo) => {
-    const { username, password, email, phoneNumber, company } = registerInfo;
+    const { username, password, address, phoneNumber, email } = registerInfo;
 
-    const url = `${this.serverUrl}'/api/v1/auth/register'`;
+    const url = `${this.serverUrl}/api/v1/auth/register`;
     const data = {
-      email,
+      address,
       phoneNumber,
-      company
+      email
     };
     const config: AxiosRequestConfig<any> = {
       withCredentials: true,
@@ -36,7 +42,13 @@ class AuthService extends BaseService {
       }
     };
 
-    return await axios.post(url, data, config);
+    const result = await axios.post(url, data, config);
+
+    if (result.status === 200) {
+      window.location.href = '/login';
+    } else {
+      throw new Error();
+    }
   };
 }
 

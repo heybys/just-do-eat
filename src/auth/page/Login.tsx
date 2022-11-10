@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './login.css';
-import { authService } from '../service/authService';
-import { LoginInfo, LoginInfoDefault } from '../model/auth.model';
+import {authService} from '../service/authService';
+import {LoginInfo, LoginInfoDefault} from '../model/auth.model';
+import PasswordInput from "../component/PasswordInput";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState<LoginInfo>(LoginInfoDefault);
@@ -29,7 +30,7 @@ const Login = () => {
               autoFocus={true}
               onChange={(event) => setLoginInfo({ ...loginInfo, username: event.target.value })}
             />
-            <input
+            <PasswordInput
               className="input"
               placeholder={'Password'}
               value={loginInfo.password}

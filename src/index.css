@@ -1,91 +1,97 @@
 :root {
-    --main-font-size: 16px;
-    --main-color: skyblue;
-    --emphasis-color: deepskyblue;
+  --main-font-size: 16px;
+  --main-color: skyblue;
+  --emphasis-color: deepskyblue;
 }
 
-*, *::after, *::before {
-    box-sizing: border-box;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    box-sizing: border-box;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
 }
 
-a, a:link, a:visited, a:active, a:hover {
-    text-decoration: none;
-    color: #000;
-    font-size: var(--main-font-size);
-    white-space: nowrap;
+a,
+a:link,
+a:visited,
+a:active,
+a:hover {
+  text-decoration: none;
+  color: #000;
+  font-size: var(--main-font-size);
+  white-space: nowrap;
 }
 
 a:active {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
-ul, li {
-    list-style: none;
-    padding-block: 0;
-    padding-inline: 0;
-    margin-block: 0;
-    margin-inline: 0;
+ul,
+li {
+  list-style: none;
+  padding-block: 0;
+  padding-inline: 0;
+  margin-block: 0;
+  margin-inline: 0;
 }
-
 
 input {
-    border: 1px solid #EEE;
-    box-sizing: border-box;
-    padding: 0 8px;
-    outline-color: var(--emphasis-color);
-    font-size: var(--main-font-size);
-    color: #999;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  padding: 0 8px;
+  outline-color: var(--emphasis-color);
+  font-size: var(--main-font-size);
+  color: #999;
 }
 
 input::placeholder {
-    font-size: calc(var(--main-font-size) - 2px);
-    color: #999;
+  font-size: calc(var(--main-font-size) - 2px);
+  color: #999;
 }
 
 button {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    box-sizing: border-box;
-    background: var(--main-color);
-    color: white;
-    font-size: var(--main-font-size);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  background: var(--main-color);
+  color: white;
+  font-size: var(--main-font-size);
 }
 
 .button:disabled {
-    background: #999999;
+  background: #999999;
 }
 
 .button:hover:enabled {
-    background: var(--emphasis-color);
-    cursor: pointer;
+  background: var(--emphasis-color);
+  cursor: pointer;
 }
 
 .button:active:enabled {
-    font-size: calc(var(--main-font-size) - 1px);
+  font-size: calc(var(--main-font-size) - 1px);
 }
 
 .flex-column {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .flex-column-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-img, svg {
-    vertical-align: initial;
+img,
+svg {
+  vertical-align: initial;
 }

@@ -1,6 +1,6 @@
-import axios, {AxiosRequestConfig} from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import BaseService from '../../generic/service/base.service';
-import {LoginInfo, RegisterInfo} from '../model/auth.model';
+import { LoginInfo, RegisterInfo } from '../model/auth.model';
 
 class AuthService extends BaseService {
   login = async (loginInfo: LoginInfo) => {
@@ -12,8 +12,8 @@ class AuthService extends BaseService {
       withCredentials: true,
       auth: {
         username,
-        password
-      }
+        password,
+      },
     };
 
     const result = await axios.post(url, data, config);
@@ -32,14 +32,14 @@ class AuthService extends BaseService {
     const data = {
       address,
       phoneNumber,
-      email
+      email,
     };
     const config: AxiosRequestConfig<any> = {
       withCredentials: true,
       auth: {
         username,
-        password
-      }
+        password,
+      },
     };
 
     const result = await axios.post(url, data, config);

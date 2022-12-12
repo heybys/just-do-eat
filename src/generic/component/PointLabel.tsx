@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PropsWithChildren } from 'react';
+import React, { PropsWithChildren } from 'react';
 import './point-label.css';
 
 interface PointLabelProps extends PropsWithChildren {
@@ -6,11 +6,7 @@ interface PointLabelProps extends PropsWithChildren {
   required?: boolean;
 }
 
-const PointLabel = ({
-  pointType = 'circle',
-  required = false,
-  children
-}: PointLabelProps) => {
+const PointLabel = ({ pointType = 'circle', required = false, children }: PointLabelProps) => {
   const pointEmoticon = (() => {
     switch (pointType) {
       case 'check':

@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const navigatorSlice = createSlice({
   name: 'navigator',
   initialState: {
-    position: 'fixed'
+    position: 'fixed',
   },
   reducers: {
     fix: (state) => {
@@ -11,8 +11,8 @@ export const navigatorSlice = createSlice({
     },
     fluid: (state) => {
       state.position = 'absolute';
-    }
-  }
+    },
+  },
 });
 
 export const { fix, fluid } = navigatorSlice.actions;

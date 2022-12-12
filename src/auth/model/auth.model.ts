@@ -5,7 +5,7 @@ export interface LoginInfo {
 
 export const LoginInfoDefault: LoginInfo = {
   username: '',
-  password: ''
+  password: '',
 };
 
 export interface RegisterInfo {
@@ -23,5 +23,5 @@ export const RegisterInfoDefault: RegisterInfo = {
   confirmPassword: '',
   address: '',
   phoneNumber: '',
-  email: ''
+  email: '',
 };

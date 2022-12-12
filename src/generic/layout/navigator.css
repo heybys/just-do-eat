@@ -1,19 +1,19 @@
 .navigator {
-    top: 0;
-    padding: 16px 32px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    box-shadow: 0 1px 3px 0 #EEE;
-    background-color: #000;
-    opacity: 0.8;
+  top: 0;
+  padding: 16px 32px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 1px 3px 0 #eee;
+  background-color: #000;
+  opacity: 0.8;
 }
 
 .navigator .inner {
-    width: 100%;
-    max-width: 1680px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  max-width: 1680px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

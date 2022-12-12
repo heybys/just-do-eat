@@ -1,13 +1,13 @@
 .menu {
-    display: flex;
-    gap: 32px;
-    margin: 0;
+  display: flex;
+  gap: 32px;
+  margin: 0;
 }
 
 .menu .item {
-    color: white;
+  color: white;
 }
 
 .menu .item.active {
-    color: var(--emphasis-color);
+  color: var(--emphasis-color);
 }

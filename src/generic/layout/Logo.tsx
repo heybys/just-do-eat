@@ -1,6 +1,6 @@
 import React from 'react';
 import './logo.css';
-import { redirect, useNavigate, useNavigation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Logo = () => {
   const navigate = useNavigate();

@@ -1,9 +1,9 @@
-import React, {FormEvent, useEffect, useRef, useState} from 'react';
+import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import './register.css';
 import PointLabel from '../../generic/component/PointLabel';
-import {RegisterInfo, RegisterInfoDefault} from '../model/auth.model';
-import {authService} from '../service/authService';
-import PasswordInput from "../component/PasswordInput";
+import { RegisterInfo, RegisterInfoDefault } from '../model/auth.model';
+import { authService } from '../service/authService';
+import PasswordInput from '../component/PasswordInput';
 
 const Register = () => {
     const [registerInfo, setRegisterInfo] = useState<RegisterInfo>(RegisterInfoDefault);
@@ -22,7 +22,7 @@ const Register = () => {
     };
 
     useEffect(() => {
-        const {username, password, confirmPassword, address, phoneNumber} = registerInfo;
+        const { username, password, confirmPassword, address, phoneNumber } = registerInfo;
         setIsValid(!!(username && password && confirmPassword && address && phoneNumber));
     }, [registerInfo]);
 
@@ -30,7 +30,7 @@ const Register = () => {
         <div className="register flex-column-center">
             <div className="paper flex-column">
                 <div className="title">
-                    <span>회원 정보</span>
+                    <span>Member Info.</span>
                 </div>
                 <form className="form flex-column" onSubmit={onSubmit}>
                     <div className="property-container flex-column">
@@ -43,7 +43,7 @@ const Register = () => {
                                 onChange={(event) =>
                                     setRegisterInfo({
                                         ...registerInfo,
-                                        username: event.target.value
+                                        username: event.target.value,
                                     })
                                 }
                             />
@@ -56,7 +56,7 @@ const Register = () => {
                                 onChange={(event) =>
                                     setRegisterInfo({
                                         ...registerInfo,
-                                        password: event.target.value
+                                        password: event.target.value,
                                     })
                                 }
                             />
@@ -70,7 +70,7 @@ const Register = () => {
                                 onChange={(event) =>
                                     setRegisterInfo({
                                         ...registerInfo,
-                                        confirmPassword: event.target.value
+                                        confirmPassword: event.target.value,
                                     })
                                 }
                             />
@@ -83,7 +83,7 @@ const Register = () => {
                                 onChange={(event) =>
                                     setRegisterInfo({
                                         ...registerInfo,
-                                        address: event.target.value
+                                        address: event.target.value,
                                     })
                                 }
                             />
@@ -96,7 +96,7 @@ const Register = () => {
                                 onChange={(event) =>
                                     setRegisterInfo({
                                         ...registerInfo,
-                                        phoneNumber: event.target.value
+                                        phoneNumber: event.target.value,
                                     })
                                 }
                             />
@@ -109,7 +109,7 @@ const Register = () => {
                                 onChange={(event) =>
                                     setRegisterInfo({
                                         ...registerInfo,
-                                        email: event.target.value
+                                        email: event.target.value,
                                     })
                                 }
                             />
@@ -117,7 +117,7 @@ const Register = () => {
                     </div>
                     <div className="button-container flex-column-center">
                         <button className="button" type="submit" disabled={!isValid}>
-                            등록 할게요.
+                            register
                         </button>
                     </div>
                 </form>

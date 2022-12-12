@@ -1,17 +1,28 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './login.css';
-import {authService} from '../service/authService';
-import {LoginInfo, LoginInfoDefault} from '../model/auth.model';
-import PasswordInput from "../component/PasswordInput";
+import { authService } from '../service/authService';
+import { LoginInfo, LoginInfoDefault } from '../model/auth.model';
+import PasswordInput from '../component/PasswordInput';
+import { IoArrowForward } from 'react-icons/io5';
+import { Toast } from 'react-bootstrap';
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState<LoginInfo>(LoginInfoDefault);
+  const [showToast, setShowToast] = useState(false);
+
+  const postMessageOnToast = (message: string, variant = 'success', delayInSeconds = 3) => {
+    setShowToast(true);
+  };
 
   const onClickLoginButton = async () => {
     const { username, password } = loginInfo;
 
     if (username && password) {
-      await authService.login(loginInfo);
+      try {
+        await authService.login(loginInfo);
+      } catch (e) {
+        postMessageOnToast('message');
+      }
     } else {
       alert('id, password empty.');
     }
@@ -20,7 +31,7 @@ const Login = () => {
   return (
     <div className="login flex-column-center">
       <div className="paper flex-column-center">
-        <div className="title">로그인</div>
+        <div className="title">Login</div>
         <div className="form flex-column-center">
           <div className="input-container flex-column-center">
             <input
@@ -43,11 +54,18 @@ const Login = () => {
               onClick={onClickLoginButton}
               disabled={!loginInfo.username || !loginInfo.password}
             >
-              레쯔기릿
+              <IoArrowForward className="icon" />
             </button>
           </div>
         </div>
       </div>
+      <Toast show={showToast} autohide onClose={() => setShowToast(false)}>
+        <Toast.Header>
+          <strong className="me-auto">Bootstrap</strong>
+          <small>11 mins ago</small>
+        </Toast.Header>
+        <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
+      </Toast>
     </div>
   );
 };

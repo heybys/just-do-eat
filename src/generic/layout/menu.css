@@ -1,6 +1,7 @@
 .menu {
     display: flex;
     gap: 32px;
+    margin: 0;
 }
 
 .menu .item {

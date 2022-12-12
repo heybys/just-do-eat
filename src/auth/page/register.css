@@ -39,7 +39,7 @@
 }
 
 .register .paper .form .button-container .button {
-    /*width: 256px;*/
-    width: 100%;
+    width: 192px;
     height: 36px;
+    border-radius: 16px;
 }

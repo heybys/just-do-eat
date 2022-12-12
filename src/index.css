@@ -4,6 +4,10 @@
     --emphasis-color: deepskyblue;
 }
 
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -54,7 +58,6 @@ button {
     box-sizing: border-box;
     background: var(--main-color);
     color: white;
-    font-weight: 900;
     font-size: var(--main-font-size);
 }
 
@@ -81,4 +84,8 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+img, svg {
+    vertical-align: initial;
 }

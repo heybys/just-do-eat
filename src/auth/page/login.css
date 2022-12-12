@@ -1,4 +1,5 @@
 .login {
+    gap: 32px;
 }
 
 .login .paper {
@@ -34,6 +35,19 @@
 }
 
 .login .paper .form .button-container .button {
-    width: 256px;
+    width: 96px;
     height: 36px;
+    border-radius: 16px;
+    font-size: 24px;
+}
+
+.login .paper .form .button-container .button:active:enabled {
+    font-size: 20px;
+}
+
+.login .paper .form .button-container .button .icon {
+    height: 100%;
+}
+
+.login .toast {
 }

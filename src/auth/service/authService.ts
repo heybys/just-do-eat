@@ -18,9 +18,7 @@ class AuthService extends BaseService {
 
     const result = await axios.post(url, data, config);
 
-    if (result.status === 200) {
-      window.location.href = '/';
-    } else {
+    if (result.status !== 200) {
       throw new Error();
     }
   };
@@ -32,7 +30,7 @@ class AuthService extends BaseService {
     const data = {
       address,
       phoneNumber,
-      email,
+      email: email || null,
     };
     const config: AxiosRequestConfig<any> = {
       withCredentials: true,
@@ -44,9 +42,7 @@ class AuthService extends BaseService {
 
     const result = await axios.post(url, data, config);
 
-    if (result.status === 200) {
-      window.location.href = '/login';
-    } else {
+    if (result.status !== 200) {
       throw new Error();
     }
   };

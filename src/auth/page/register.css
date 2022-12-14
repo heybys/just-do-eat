@@ -43,3 +43,34 @@
   height: 36px;
   border-radius: 16px;
 }
+
+.register .paper .form .button-container .button .icon {
+  height: 100%;
+}
+
+.register .paper .form .button-container .button .spinner {
+  animation: spin infinite 1s linear;
+}
+
+.register .toast-container {
+  padding: 2em;
+}
+
+.register .toast .toast-header {
+  color: rgba(215, 76, 76, 0.95);
+  font-weight: normal;
+}
+
+.register .toast .toast-header .icon {
+  font-size: 1.3em;
+}
+
+.register .toast .toast-header .btn-close {
+  width: 0.2em;
+  height: 0.2em;
+  margin-right: 0;
+}
+
+.register .toast .toast-body {
+  font-size: 1em;
+}

@@ -4,9 +4,14 @@ import PointLabel from '../../generic/component/PointLabel';
 import { RegisterInfo, RegisterInfoDefault } from '../model/auth.model';
 import { authService } from '../service/authService';
 import PasswordInput from '../component/PasswordInput';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { Toast, ToastContainer } from 'react-bootstrap';
+import { IoAlertCircleSharp } from 'react-icons/io5';
 
 const Register = () => {
   const [registerInfo, setRegisterInfo] = useState<RegisterInfo>(RegisterInfoDefault);
+  const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const confirmPasswordRef = useRef<HTMLInputElement>(null);
 
@@ -14,12 +19,22 @@ const Register = () => {
     e.preventDefault();
 
     if (registerInfo.password == registerInfo.confirmPassword) {
-      await authService.register(registerInfo);
+      try {
+        setLoading(true);
+        await authService.register(registerInfo);
+        window.location.href = '/login';
+      } catch (e) {
+        setShow(true);
+      } finally {
+        setLoading(false);
+      }
     } else {
       alert('check your password.');
       confirmPasswordRef.current?.focus();
     }
   };
+
+  const onCloseToast = () => setShow(false);
 
   useEffect(() => {
     const { username, password, confirmPassword, address, phoneNumber } = registerInfo;
@@ -117,11 +132,20 @@ const Register = () => {
           </div>
           <div className="button-container flex-column-center">
             <button className="button" type="submit" disabled={!isValid}>
-              register
+              {loading ? <AiOutlineLoading3Quarters className="icon spinner" /> : 'register'}
             </button>
           </div>
         </form>
       </div>
+      <ToastContainer position={'bottom-end'}>
+        <Toast show={show} delay={2000} onClose={onCloseToast} autohide>
+          <Toast.Header>
+            <IoAlertCircleSharp className="rounded me-2 icon" />
+            <strong className="me-auto">Failure</strong>
+          </Toast.Header>
+          <Toast.Body>The information may be incorrect.</Toast.Body>
+        </Toast>
+      </ToastContainer>
     </div>
   );
 };

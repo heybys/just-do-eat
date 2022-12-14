@@ -95,3 +95,12 @@ img,
 svg {
   vertical-align: initial;
 }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -38,7 +38,6 @@
   width: 96px;
   height: 36px;
   border-radius: 16px;
-  font-size: 24px;
 }
 
 .login .paper .form .button-container .button:active:enabled {
@@ -49,5 +48,29 @@
   height: 100%;
 }
 
-.login .toast {
+.login .paper .form .button-container .button .spinner {
+  animation: spin infinite 1s linear;
+}
+
+.login .toast-container {
+  padding: 2em;
+}
+
+.login .toast .toast-header {
+  color: rgba(215, 76, 76, 0.95);
+  font-weight: normal;
+}
+
+.login .toast .toast-header .icon {
+  font-size: 1.3em;
+}
+
+.login .toast .toast-header .btn-close {
+  width: 0.2em;
+  height: 0.2em;
+  margin-right: 0;
+}
+
+.login .toast .toast-body {
+  font-size: 1em;
 }

@@ -5,10 +5,11 @@ import ErrorPage from './generic/page/ErrorPage';
 import Site from './page/Site';
 import About from './page/About';
 import Dashboard from './page/Dashboard';
-import { configuredStore } from './store/configured-store';
+import { store } from './store/store';
 import { Provider } from 'react-redux';
 import Login from './auth/page/Login';
 import Register from './auth/page/Register';
+import Main from './page/Main';
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,8 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: '/main',
-        element: <div>main</div>,
+        path: '/',
+        element: <Main />,
       },
       {
         path: '/site',
@@ -48,8 +49,8 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => (
-  <Provider store={configuredStore}>
-    <RouterProvider router={router} />;
+  <Provider store={store}>
+    <RouterProvider router={router} />
   </Provider>
 );
 

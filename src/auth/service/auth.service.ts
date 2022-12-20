@@ -1,8 +1,17 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import BaseService from '../../generic/service/base.service';
-import { LoginInfo, RegisterInfo } from '../model/auth.model';
+import { LoginInfo, RegisterInfo } from './model/auth.model';
 
 class AuthService extends BaseService {
+  getProfile = async () => {
+    const url = `${this.serverUrl}/api/v1/auth/profile`;
+
+    const result = await axios.get(url);
+
+    console.log(result);
+    return result;
+  };
+
   login = async (loginInfo: LoginInfo) => {
     const { username, password } = loginInfo;
 
@@ -18,8 +27,10 @@ class AuthService extends BaseService {
 
     const result = await axios.post(url, data, config);
 
+    console.log(result);
     if (result.status !== 200) {
       throw new Error();
+    } else {
     }
   };
 
@@ -44,6 +55,8 @@ class AuthService extends BaseService {
 
     if (result.status !== 200) {
       throw new Error();
+    } else {
+      console.log(result);
     }
   };
 }

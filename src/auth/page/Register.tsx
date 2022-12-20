@@ -1,8 +1,8 @@
 import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import './register.css';
 import PointLabel from '../../generic/component/PointLabel';
-import { RegisterInfo, RegisterInfoDefault } from '../model/auth.model';
-import { authService } from '../service/authService';
+import { RegisterInfo, RegisterInfoDefault } from '../service/model/auth.model';
+import { authService } from '../service/auth.service';
 import PasswordInput from '../component/PasswordInput';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { Toast, ToastContainer } from 'react-bootstrap';

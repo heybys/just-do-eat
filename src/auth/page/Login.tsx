@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from 'react';
 import './login.css';
-import { authService } from '../service/authService';
-import { LoginInfo, LoginInfoDefault } from '../model/auth.model';
+import { authService } from '../service/auth.service';
+import { LoginInfo, LoginInfoDefault } from '../service/model/auth.model';
 import PasswordInput from '../component/PasswordInput';
 import { IoAlertCircleSharp, IoArrowForward } from 'react-icons/io5';
 import { Toast, ToastContainer } from 'react-bootstrap';

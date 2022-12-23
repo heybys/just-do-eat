@@ -1,63 +1,25 @@
-import axios, { AxiosRequestConfig } from 'axios';
-import BaseService from '../../generic/service/base.service';
-import { LoginInfo, RegisterInfo } from './model/auth.model';
+import { AxiosBasicCredentials } from 'axios';
+import { Profile, RegisterInfo } from './model/auth.model';
+import httpService from './http.service';
 
-class AuthService extends BaseService {
-  getProfile = async () => {
-    const url = `${this.serverUrl}/api/v1/auth/profile`;
+class AuthService {
+  getProfile = async (): Promise<Profile> => {
+    const result = await httpService.get('/auth/profile');
 
-    const result = await axios.get(url);
-
-    console.log(result);
-    return result;
+    return result.data.payload as Profile;
   };
 
-  login = async (loginInfo: LoginInfo) => {
-    const { username, password } = loginInfo;
-
-    const url = `${this.serverUrl}/api/v1/auth/login`;
-    const data = {};
-    const config: AxiosRequestConfig<any> = {
-      withCredentials: true,
-      auth: {
-        username,
-        password,
-      },
-    };
-
-    const result = await axios.post(url, data, config);
-
-    console.log(result);
-    if (result.status !== 200) {
-      throw new Error();
-    } else {
-    }
+  login = async (credentials: AxiosBasicCredentials) => {
+    await httpService.post('/auth/login', undefined, { auth: credentials });
   };
 
-  register = async (registerInfo: RegisterInfo) => {
-    const { username, password, address, phoneNumber, email } = registerInfo;
-
-    const url = `${this.serverUrl}/api/v1/auth/register`;
+  register = async (credentials: AxiosBasicCredentials, registerInfo: RegisterInfo) => {
     const data = {
-      address,
-      phoneNumber,
-      email: email || null,
-    };
-    const config: AxiosRequestConfig<any> = {
-      withCredentials: true,
-      auth: {
-        username,
-        password,
-      },
+      ...registerInfo,
+      email: registerInfo.email || null,
     };
 
-    const result = await axios.post(url, data, config);
-
-    if (result.status !== 200) {
-      throw new Error();
-    } else {
-      console.log(result);
-    }
+    await httpService.post('/auth/register', data, { auth: credentials });
   };
 }
 

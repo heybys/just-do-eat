@@ -1,15 +1,28 @@
 import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import './register.css';
 import PointLabel from '../../generic/component/PointLabel';
-import { RegisterInfo, RegisterInfoDefault } from '../service/model/auth.model';
+import { RegisterInfo } from '../service/model/auth.model';
 import { authService } from '../service/auth.service';
 import PasswordInput from '../component/PasswordInput';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { Toast, ToastContainer } from 'react-bootstrap';
 import { IoAlertCircleSharp } from 'react-icons/io5';
+import { AxiosBasicCredentials } from 'axios';
+
+const defaultCredentials: AxiosBasicCredentials = {
+  username: '',
+  password: '',
+};
+const defaultRegisterInfo: RegisterInfo = {
+  confirmPassword: '',
+  address: '',
+  phoneNumber: '',
+  email: '',
+};
 
 const Register = () => {
-  const [registerInfo, setRegisterInfo] = useState<RegisterInfo>(RegisterInfoDefault);
+  const [credentials, setCredentials] = useState<AxiosBasicCredentials>(defaultCredentials);
+  const [registerInfo, setRegisterInfo] = useState<RegisterInfo>(defaultRegisterInfo);
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
   const [isValid, setIsValid] = useState(false);
@@ -18,10 +31,10 @@ const Register = () => {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (registerInfo.password == registerInfo.confirmPassword) {
+    if (credentials.password == registerInfo.confirmPassword) {
       try {
         setLoading(true);
-        await authService.register(registerInfo);
+        await authService.register(credentials, registerInfo);
         window.location.href = '/login';
       } catch (e) {
         setShow(true);
@@ -37,9 +50,10 @@ const Register = () => {
   const onCloseToast = () => setShow(false);
 
   useEffect(() => {
-    const { username, password, confirmPassword, address, phoneNumber } = registerInfo;
+    const { username, password } = credentials;
+    const { confirmPassword, address, phoneNumber } = registerInfo;
     setIsValid(!!(username && password && confirmPassword && address && phoneNumber));
-  }, [registerInfo]);
+  }, [credentials, registerInfo]);
 
   return (
     <div className="register flex-column-center">
@@ -53,11 +67,11 @@ const Register = () => {
               <PointLabel required>Username</PointLabel>
               <input
                 className="input"
-                value={registerInfo.username}
+                value={credentials.username}
                 autoFocus
                 onChange={(event) =>
-                  setRegisterInfo({
-                    ...registerInfo,
+                  setCredentials({
+                    ...credentials,
                     username: event.target.value,
                   })
                 }
@@ -67,10 +81,10 @@ const Register = () => {
               <PointLabel required>Password</PointLabel>
               <PasswordInput
                 className="input"
-                value={registerInfo.password}
+                value={credentials.password}
                 onChange={(event) =>
-                  setRegisterInfo({
-                    ...registerInfo,
+                  setCredentials({
+                    ...credentials,
                     password: event.target.value,
                   })
                 }

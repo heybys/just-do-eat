@@ -1,14 +1,19 @@
 import React, { FormEvent, useState } from 'react';
 import './login.css';
 import { authService } from '../service/auth.service';
-import { LoginInfo, LoginInfoDefault } from '../service/model/auth.model';
 import PasswordInput from '../component/PasswordInput';
 import { IoAlertCircleSharp, IoArrowForward } from 'react-icons/io5';
 import { Toast, ToastContainer } from 'react-bootstrap';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { AxiosBasicCredentials } from 'axios';
+
+const defaultCredentials: AxiosBasicCredentials = {
+  username: '',
+  password: '',
+};
 
 const Login = () => {
-  const [loginInfo, setLoginInfo] = useState<LoginInfo>(LoginInfoDefault);
+  const [credentials, setCredentials] = useState<AxiosBasicCredentials>(defaultCredentials);
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -17,7 +22,7 @@ const Login = () => {
 
     try {
       setLoading(true);
-      await authService.login(loginInfo);
+      await authService.login(credentials);
       window.location.href = '/';
     } catch (e) {
       setShow(true);
@@ -37,19 +42,23 @@ const Login = () => {
             <input
               className="input"
               placeholder={'Username'}
-              value={loginInfo.username}
+              value={credentials.username}
               autoFocus={true}
-              onChange={(event) => setLoginInfo({ ...loginInfo, username: event.target.value })}
+              onChange={(event) => setCredentials({ ...credentials, username: event.target.value })}
             />
             <PasswordInput
               className="input"
               placeholder={'Password'}
-              value={loginInfo.password}
-              onChange={(event) => setLoginInfo({ ...loginInfo, password: event.target.value })}
+              value={credentials.password}
+              onChange={(event) => setCredentials({ ...credentials, password: event.target.value })}
             />
           </div>
           <div className="button-container flex-column-center">
-            <button className="button" type="submit" disabled={loading || !loginInfo.username || !loginInfo.password}>
+            <button
+              className="button"
+              type="submit"
+              disabled={loading || !credentials.username || !credentials.password}
+            >
               {loading ? <AiOutlineLoading3Quarters className="icon spinner" /> : <IoArrowForward className="icon" />}
             </button>
           </div>

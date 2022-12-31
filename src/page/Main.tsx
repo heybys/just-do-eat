@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { authService } from '../auth/service/auth.service';
-import { Profile } from '../auth/service/model/auth.model';
+import React, { useEffect } from 'react';
+import { useAppSelector } from '../store/hooks';
 
 const Main = () => {
-  const [profile, setProfile] = useState<Profile>({ username: '', address: '', phoneNumber: '' });
+  const user = useAppSelector((state) => state.user);
   useEffect(() => {
-    authService.getProfile().then((value) => {
-      setProfile(value);
-    });
-
     return () => {};
   }, []);
 
   return (
-    <div>
-      <div>main</div>
-      <div>{JSON.stringify(profile)}</div>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 32, padding: 32 }}>
+      <h3>main</h3>
+      <pre>{JSON.stringify(user, undefined, 4)}</pre>
     </div>
   );
 };

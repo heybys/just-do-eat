@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const httpService = axios.create({
+const httpClient = axios.create({
   baseURL: `${process.env.REACT_APP_SERVER_HOST}:${process.env.REACT_APP_SERVER_PORT}/api/v1`,
   withCredentials: true,
 });
 
-httpService.interceptors.request.use(
+httpClient.interceptors.request.use(
   (request) => {
     console.log(request);
     return request;
@@ -16,7 +16,7 @@ httpService.interceptors.request.use(
   },
 );
 
-httpService.interceptors.response.use(
+httpClient.interceptors.response.use(
   (response) => {
     console.log(response);
     return response;
@@ -27,4 +27,4 @@ httpService.interceptors.response.use(
   },
 );
 
-export default httpService;
+export default httpClient;

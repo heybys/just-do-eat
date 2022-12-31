@@ -1,16 +1,22 @@
 import { AxiosBasicCredentials } from 'axios';
 import { Profile, RegisterInfo } from './model/auth.model';
-import httpService from './http.service';
+import httpClient from './http-client';
 
 class AuthService {
   getProfile = async (): Promise<Profile> => {
-    const result = await httpService.get('/auth/profile');
+    const result = await httpClient.get('/auth/profile');
 
     return result.data.payload as Profile;
   };
 
+  logout = async () => {
+    await httpClient.delete('/auth/logout');
+  };
+
   login = async (credentials: AxiosBasicCredentials) => {
-    await httpService.post('/auth/login', undefined, { auth: credentials });
+    const response = await httpClient.post('/auth/login', undefined, { auth: credentials });
+
+    return response.data.payload;
   };
 
   register = async (credentials: AxiosBasicCredentials, registerInfo: RegisterInfo) => {
@@ -19,7 +25,7 @@ class AuthService {
       email: registerInfo.email || null,
     };
 
-    await httpService.post('/auth/register', data, { auth: credentials });
+    await httpClient.post('/auth/register', data, { auth: credentials });
   };
 }
 

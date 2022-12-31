@@ -6,6 +6,9 @@ import { IoAlertCircleSharp, IoArrowForward } from 'react-icons/io5';
 import { Toast, ToastContainer } from 'react-bootstrap';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { AxiosBasicCredentials } from 'axios';
+import { userActions } from '../../store/slice/user-slice';
+import { useAppDispatch } from '../../store/hooks';
+import { useNavigate } from 'react-router-dom';
 
 const defaultCredentials: AxiosBasicCredentials = {
   username: '',
@@ -13,6 +16,8 @@ const defaultCredentials: AxiosBasicCredentials = {
 };
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [credentials, setCredentials] = useState<AxiosBasicCredentials>(defaultCredentials);
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
@@ -22,8 +27,9 @@ const Login = () => {
 
     try {
       setLoading(true);
-      await authService.login(credentials);
-      window.location.href = '/';
+      const profile = await authService.login(credentials);
+      dispatch(userActions.authenticate(profile));
+      navigate('/');
     } catch (e) {
       setShow(true);
     } finally {

@@ -2,12 +2,12 @@ import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import './register.css';
 import PointLabel from '../../generic/component/PointLabel';
 import { RegisterInfo } from '../service/model/auth.model';
-import { authService } from '../service/auth.service';
 import PasswordInput from '../component/PasswordInput';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { Toast, ToastContainer } from 'react-bootstrap';
 import { IoAlertCircleSharp } from 'react-icons/io5';
 import { AxiosBasicCredentials } from 'axios';
+import { userService } from '../service/user.service';
 
 const defaultCredentials: AxiosBasicCredentials = {
   username: '',
@@ -34,7 +34,7 @@ const Register = () => {
     if (credentials.password == registerInfo.confirmPassword) {
       try {
         setLoading(true);
-        await authService.register(credentials, registerInfo);
+        await userService.register(credentials, registerInfo);
         window.location.href = '/login';
       } catch (e) {
         setShow(true);

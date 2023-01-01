@@ -7,8 +7,8 @@ import About from './page/About';
 import Dashboard from './page/Dashboard';
 import { persistor, store } from './store/store';
 import { Provider } from 'react-redux';
-import Login from './auth/page/Login';
-import Register from './auth/page/Register';
+import Login from './user/page/Login';
+import Register from './user/page/Register';
 import Main from './page/Main';
 import { PersistGate } from 'redux-persist/integration/react';
 

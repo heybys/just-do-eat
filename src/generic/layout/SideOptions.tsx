@@ -2,7 +2,7 @@ import React from 'react';
 import './side-options.css';
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { authService } from '../../auth/service/auth.service';
+import { authService } from '../../user/service/auth.service';
 import { userActions } from '../../store/slice/user-slice';
 
 const SideOptions = () => {

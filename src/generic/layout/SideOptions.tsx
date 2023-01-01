@@ -8,8 +8,13 @@ const SideOptions = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated);
+  const isLoading = useAppSelector((state) => state.user.isLoading);
 
   const onClickLogout = async () => {
+    if (isLoading) {
+      return;
+    }
+
     try {
       const res = await dispatch(logout()).unwrap();
       console.log(res);

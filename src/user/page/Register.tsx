@@ -8,6 +8,7 @@ import { Toast, ToastContainer } from 'react-bootstrap';
 import { IoAlertCircleSharp } from 'react-icons/io5';
 import { AxiosBasicCredentials } from 'axios';
 import { userService } from '../service/user.service';
+import { useNavigate } from 'react-router-dom';
 
 const defaultCredentials: AxiosBasicCredentials = {
   username: '',
@@ -21,6 +22,7 @@ const defaultRegisterInfo: RegisterInfo = {
 };
 
 const Register = () => {
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState<AxiosBasicCredentials>(defaultCredentials);
   const [registerInfo, setRegisterInfo] = useState<RegisterInfo>(defaultRegisterInfo);
   const [loading, setLoading] = useState(false);
@@ -35,7 +37,7 @@ const Register = () => {
       try {
         setLoading(true);
         await userService.register(credentials, registerInfo);
-        window.location.href = '/login';
+        navigate('/login');
       } catch (e) {
         setShow(true);
       } finally {

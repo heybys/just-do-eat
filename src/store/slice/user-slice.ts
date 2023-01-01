@@ -7,11 +7,11 @@ const userSlice = createSlice({
     profile: undefined,
   },
   reducers: {
-    authenticate: (state, action) => ({
+    login: (state, action) => ({
       isAuthenticated: true,
       profile: action.payload,
     }),
-    deauthenticate: (state) => ({
+    logout: (state) => ({
       isAuthenticated: false,
       profile: undefined,
     }),

@@ -28,7 +28,7 @@ const Login = () => {
     try {
       setLoading(true);
       const profile = await authService.login(credentials);
-      dispatch(userActions.authenticate(profile));
+      dispatch(userActions.login(profile));
       navigate('/');
     } catch (e) {
       setShow(true);

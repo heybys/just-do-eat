@@ -12,7 +12,7 @@ const SideOptions = () => {
   const logout = async () => {
     if (isAuthenticated) {
       await authService.logout();
-      dispatch(userActions.deauthenticate());
+      dispatch(userActions.logout());
     }
   };
 

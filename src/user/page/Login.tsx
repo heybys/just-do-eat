@@ -1,14 +1,13 @@
 import React, { FormEvent, useState } from 'react';
 import './login.css';
-import { authService } from '../service/auth.service';
 import PasswordInput from '../component/PasswordInput';
 import { IoAlertCircleSharp, IoArrowForward } from 'react-icons/io5';
 import { Toast, ToastContainer } from 'react-bootstrap';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { AxiosBasicCredentials } from 'axios';
-import { userActions } from '../../store/slice/user-slice';
-import { useAppDispatch } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../../store/slice/user-slice';
 
 const defaultCredentials: AxiosBasicCredentials = {
   username: '',
@@ -18,22 +17,21 @@ const defaultCredentials: AxiosBasicCredentials = {
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const isLoading = useAppSelector((state) => state.user.isLoading);
+
   const [credentials, setCredentials] = useState<AxiosBasicCredentials>(defaultCredentials);
-  const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      setLoading(true);
-      const profile = await authService.login(credentials);
-      dispatch(userActions.login(profile));
+      const res = await dispatch(login(credentials)).unwrap();
+      console.log(res);
       navigate('/');
-    } catch (e) {
+    } catch (error: any) {
+      console.log(error);
       setShow(true);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -63,9 +61,9 @@ const Login = () => {
             <button
               className="button"
               type="submit"
-              disabled={loading || !credentials.username || !credentials.password}
+              disabled={isLoading || !credentials.username || !credentials.password}
             >
-              {loading ? <AiOutlineLoading3Quarters className="icon spinner" /> : <IoArrowForward className="icon" />}
+              {isLoading ? <AiOutlineLoading3Quarters className="icon spinner" /> : <IoArrowForward className="icon" />}
             </button>
           </div>
         </form>

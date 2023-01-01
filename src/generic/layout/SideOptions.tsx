@@ -1,27 +1,31 @@
 import React from 'react';
 import './side-options.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { authService } from '../../user/service/auth.service';
-import { userActions } from '../../store/slice/user-slice';
+import { logout } from '../../store/slice/user-slice';
 
 const SideOptions = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated);
 
-  const logout = async () => {
-    if (isAuthenticated) {
-      await authService.logout();
-      dispatch(userActions.logout());
+  const onClickLogout = async () => {
+    try {
+      const res = await dispatch(logout()).unwrap();
+      console.log(res);
+    } catch (error: any) {
+      console.log(error);
+    } finally {
+      navigate('/login');
     }
   };
 
   return (
     <div className="side-options">
       {isAuthenticated ? (
-        <NavLink className="option" to="/login" onClick={logout} end>
+        <a className="option logout" onClick={onClickLogout}>
           Logout
-        </NavLink>
+        </a>
       ) : (
         <>
           <NavLink className="option login" to="/login" end>

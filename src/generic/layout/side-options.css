@@ -7,6 +7,10 @@
   color: white;
 }
 
+.side-options .option.logout {
+  cursor: pointer;
+}
+
 .side-options .option.login {
   color: var(--main-color);
 }

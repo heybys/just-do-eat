@@ -1,15 +1,13 @@
-import { AxiosBasicCredentials } from 'axios';
-import httpClient from '../../generic/utils/http-client';
+import { AxiosBasicCredentials, AxiosResponse } from 'axios';
+import httpClient, { CommonResponse } from '../../generic/utils/http-client';
 
 class AuthService {
-  login = async (credentials: AxiosBasicCredentials): Promise<any> => {
-    const response = await httpClient.post('/auth/login', undefined, { auth: credentials });
-
-    return response.data.payload;
+  login = async (credentials: AxiosBasicCredentials): Promise<AxiosResponse<CommonResponse>> => {
+    return await httpClient.post('/auth/login', undefined, { auth: credentials });
   };
 
-  logout = async (): Promise<void> => {
-    await httpClient.delete('/auth/logout');
+  logout = async (): Promise<AxiosResponse<CommonResponse>> => {
+    return await httpClient.delete('/auth/logout');
   };
 }
 

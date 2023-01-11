@@ -5,7 +5,7 @@ import userReducer from './slice/user-slice';
 import { PersistConfig } from 'redux-persist/es/types';
 import storage from 'redux-persist/es/storage';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist/es/constants';
-import { authService } from '../user/service/auth.service';
+import { authService } from '../service/user/auth.service';
 
 const rootReducer = combineReducers({
   counter: counterReducer,

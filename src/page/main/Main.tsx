@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useAppSelector } from '../store/hooks';
+import { useAppSelector } from '../../store/hooks';
 
 const Main = () => {
   const user = useAppSelector((state) => state.user);

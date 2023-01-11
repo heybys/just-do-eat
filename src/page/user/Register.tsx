@@ -1,13 +1,13 @@
 import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import './register.css';
-import PointLabel from '../../generic/component/PointLabel';
-import { RegisterInfo } from '../service/model/auth.model';
-import PasswordInput from '../component/PasswordInput';
+import PointLabel from './component/PointLabel';
+import { RegisterInfo } from '../../service/user/model/auth.model';
+import PasswordInput from './component/PasswordInput';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { Toast, ToastContainer } from 'react-bootstrap';
 import { IoAlertCircleSharp } from 'react-icons/io5';
 import { AxiosBasicCredentials } from 'axios';
-import { userService } from '../service/user.service';
+import { userService } from '../../service/user/user.service';
 import { useNavigate } from 'react-router-dom';
 
 const defaultCredentials: AxiosBasicCredentials = {

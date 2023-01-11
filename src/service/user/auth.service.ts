@@ -1,5 +1,5 @@
 import { AxiosBasicCredentials, AxiosResponse } from 'axios';
-import httpClient, { CommonResponse } from '../../generic/utils/http-client';
+import httpClient, { CommonResponse } from '../utils/http-client';
 
 class AuthService {
   login = async (credentials: AxiosBasicCredentials): Promise<AxiosResponse<CommonResponse>> => {

@@ -1,6 +1,6 @@
 import { AxiosBasicCredentials, AxiosResponse } from 'axios';
 import { RegisterInfo } from './model/auth.model';
-import httpClient from '../../generic/utils/http-client';
+import httpClient from '../utils/http-client';
 
 class UserService {
   register = async (credentials: AxiosBasicCredentials, registerInfo: RegisterInfo): Promise<AxiosResponse<any>> => {

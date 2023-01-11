@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { increase } from '../store/slice/counter-slice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { increase } from '../../store/slice/counter-slice';
 
 const About = () => {
   const count = useAppSelector((state) => state.counter.value);

@@ -1,6 +1,6 @@
 import React, { FormEvent, useState } from 'react';
 import './login.css';
-import PasswordInput from '../component/PasswordInput';
+import PasswordInput from './component/PasswordInput';
 import { IoAlertCircleSharp, IoArrowForward } from 'react-icons/io5';
 import { Toast, ToastContainer } from 'react-bootstrap';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';

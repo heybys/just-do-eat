@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FocusEvent, forwardRef, InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import './password-input.css';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
-import { usePreviousState } from '../../store/hooks';
+import { usePreviousState } from '../../../store/hooks';
 
 const PasswordInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(
   ({ className, placeholder, value, onChange }: InputHTMLAttributes<HTMLInputElement>, ref) => {

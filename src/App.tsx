@@ -1,15 +1,15 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Layout from './generic/layout/Layout';
-import ErrorPage from './generic/page/ErrorPage';
-import Site from './page/Site';
-import About from './page/About';
-import Dashboard from './page/Dashboard';
+import Layout from './page/layout/Layout';
+import ErrorPage from './page/generic/ErrorPage';
+import Site from './page/etc/Site';
+import About from './page/etc/About';
+import Dashboard from './page/etc/Dashboard';
 import { persistor, store } from './store/store';
 import { Provider } from 'react-redux';
-import Login from './user/page/Login';
-import Register from './user/page/Register';
-import Main from './page/Main';
+import Login from './page/user/Login';
+import Register from './page/user/Register';
+import Main from './page/main/Main';
 import { PersistGate } from 'redux-persist/integration/react';
 
 const router = createBrowserRouter([

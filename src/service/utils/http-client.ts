@@ -1,9 +1,10 @@
 import axios, { AxiosError } from 'axios';
 
 const printConsoleLog = false;
+const apiVersion = 'v1';
 
 const httpClient = axios.create({
-  baseURL: `${process.env.REACT_APP_SERVER_HOST}:${process.env.REACT_APP_SERVER_PORT}/api/v1`,
+  baseURL: `${process.env.REACT_APP_SERVER_HOST}:${process.env.REACT_APP_SERVER_PORT}/api/${apiVersion}`,
   withCredentials: true,
 });
 

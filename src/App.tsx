@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './page/layout/Layout';
-import ErrorPage from './page/generic/ErrorPage';
+import ErrorPage from './page/error/ErrorPage';
 import Site from './page/etc/Site';
 import About from './page/etc/About';
 import Dashboard from './page/etc/Dashboard';

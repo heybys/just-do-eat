@@ -3,11 +3,11 @@ import httpClient, { CommonResponse } from '../utils/http-client';
 
 class AuthService {
   login = async (credentials: AxiosBasicCredentials): Promise<AxiosResponse<CommonResponse>> => {
-    return await httpClient.post('/auth/login', undefined, { auth: credentials });
+    return await httpClient.post('/login', undefined, { auth: credentials });
   };
 
   logout = async (): Promise<AxiosResponse<CommonResponse>> => {
-    return await httpClient.delete('/auth/logout');
+    return await httpClient.delete('/logout');
   };
 }
 

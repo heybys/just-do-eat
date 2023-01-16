@@ -48,13 +48,23 @@ const Login = () => {
               placeholder={'Username'}
               value={credentials.username}
               autoFocus={true}
-              onChange={(event) => setCredentials({ ...credentials, username: event.target.value })}
+              onChange={(event) =>
+                setCredentials({
+                  ...credentials,
+                  username: event.target.value,
+                })
+              }
             />
             <PasswordInput
               className="input"
               placeholder={'Password'}
               value={credentials.password}
-              onChange={(event) => setCredentials({ ...credentials, password: event.target.value })}
+              onChange={(event) =>
+                setCredentials({
+                  ...credentials,
+                  password: event.target.value,
+                })
+              }
             />
           </div>
           <div className="button-container flex-column-center">

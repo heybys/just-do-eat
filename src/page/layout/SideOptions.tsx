@@ -7,8 +7,8 @@ import { logout } from '../../store/slice/auth-slice';
 const SideOptions = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated);
-  const isLoading = useAppSelector((state) => state.user.isLoading);
+  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
+  const isLoading = useAppSelector((state) => state.auth.isLoading);
 
   const onClickLogout = async () => {
     if (isLoading) {

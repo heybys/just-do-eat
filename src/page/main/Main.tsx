@@ -3,7 +3,7 @@ import { useAppSelector } from '../../store/hooks';
 import { shopService } from '../../service/shop/shop.service';
 
 const Main = () => {
-  const user = useAppSelector((state) => state.user);
+  const auth = useAppSelector((state) => state.auth);
   const [menuBoard, setMenuBoard] = useState();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Main = () => {
       }}
     >
       <h3>main</h3>
-      <pre>{JSON.stringify(user, undefined, 4)}</pre>
+      <pre>{JSON.stringify(auth, undefined, 4)}</pre>
       <div>{menuBoard && <pre>{JSON.stringify(menuBoard, undefined, 4)}</pre>}</div>
     </div>
   );

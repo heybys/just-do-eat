@@ -17,7 +17,7 @@ const defaultCredentials: AxiosBasicCredentials = {
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const isLoading = useAppSelector((state) => state.user.isLoading);
+  const isLoading = useAppSelector((state) => state.auth.isLoading);
 
   const [credentials, setCredentials] = useState<AxiosBasicCredentials>(defaultCredentials);
   const [show, setShow] = useState(false);

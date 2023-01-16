@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import counterReducer from './slice/counter-slice';
-import userReducer from './slice/user-slice';
+import authReducer from './slice/auth-slice';
 import { PersistConfig } from 'redux-persist/es/types';
 import storage from 'redux-persist/es/storage';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist/es/constants';
@@ -9,13 +9,13 @@ import { authService } from '../service/user/auth.service';
 
 const rootReducer = combineReducers({
   counter: counterReducer,
-  user: userReducer,
+  auth: authReducer,
 });
 
 const persistConfig: PersistConfig<any> = {
   key: 'root',
   storage: storage,
-  whitelist: ['counter', 'user'],
+  whitelist: ['counter', 'auth'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

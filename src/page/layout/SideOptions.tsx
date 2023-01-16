@@ -2,7 +2,7 @@ import React from 'react';
 import './side-options.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { logout } from '../../store/slice/user-slice';
+import { logout } from '../../store/slice/auth-slice';
 
 const SideOptions = () => {
   const navigate = useNavigate();

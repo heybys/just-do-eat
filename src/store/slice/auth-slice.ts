@@ -12,8 +12,8 @@ const initialState: {
   loginUserInfo: undefined,
 };
 
-const userSlice = createSlice({
-  name: 'user',
+const authSlice = createSlice({
+  name: 'auth',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -46,7 +46,7 @@ const userSlice = createSlice({
   },
 });
 
-export const login = createAsyncThunk('user/login', async (credentials: AxiosBasicCredentials, { rejectWithValue }) => {
+export const login = createAsyncThunk('login', async (credentials: AxiosBasicCredentials, { rejectWithValue }) => {
   try {
     const response = await authService.login(credentials);
     return response.data;
@@ -55,7 +55,7 @@ export const login = createAsyncThunk('user/login', async (credentials: AxiosBas
   }
 });
 
-export const logout = createAsyncThunk('user/logout', async (arg, { rejectWithValue }) => {
+export const logout = createAsyncThunk('logout', async (arg, { rejectWithValue }) => {
   try {
     const response = await authService.logout();
     return response.data;
@@ -64,4 +64,4 @@ export const logout = createAsyncThunk('user/logout', async (arg, { rejectWithVa
   }
 });
 
-export default userSlice.reducer;
+export default authSlice.reducer;

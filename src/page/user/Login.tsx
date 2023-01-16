@@ -7,7 +7,7 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { AxiosBasicCredentials } from 'axios';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../store/slice/user-slice';
+import { login } from '../../store/slice/auth-slice';
 
 const defaultCredentials: AxiosBasicCredentials = {
   username: '',

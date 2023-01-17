@@ -46,19 +46,19 @@ const authSlice = createSlice({
   },
 });
 
-export const login = createAsyncThunk('login', async (credentials: AxiosBasicCredentials, { rejectWithValue }) => {
+export const login = createAsyncThunk('auth/login', async (credentials: AxiosBasicCredentials, { fulfillWithValue, rejectWithValue }) => {
   try {
     const response = await authService.login(credentials);
-    return response.data;
+    return fulfillWithValue(response.data);
   } catch (e: any) {
     return rejectWithValue(e.response.data);
   }
 });
 
-export const logout = createAsyncThunk('logout', async (arg, { rejectWithValue }) => {
+export const logout = createAsyncThunk('auth/logout', async (arg, { fulfillWithValue, rejectWithValue }) => {
   try {
     const response = await authService.logout();
-    return response.data;
+    return fulfillWithValue(response.data);
   } catch (e: any) {
     return rejectWithValue(e.response.data);
   }

@@ -7,7 +7,7 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { Toast, ToastContainer } from 'react-bootstrap';
 import { IoAlertCircleSharp } from 'react-icons/io5';
 import { AxiosBasicCredentials } from 'axios';
-import { userService } from '../../service/user/user.service';
+import { memberService } from '../../service/user/member.service';
 import { useNavigate } from 'react-router-dom';
 
 const defaultCredentials: AxiosBasicCredentials = {
@@ -36,7 +36,7 @@ const Register = () => {
     if (credentials.password == registerInfo.confirmPassword) {
       try {
         setLoading(true);
-        await userService.register(credentials, registerInfo);
+        await memberService.register(credentials, registerInfo);
         navigate('/login');
       } catch (e) {
         setShow(true);
